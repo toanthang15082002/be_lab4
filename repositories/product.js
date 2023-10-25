@@ -36,7 +36,7 @@ const createProduct = async ({
 
 const getDetail = async (id) => {
   try {
-    const result = await Product.find({ _id: id }).populate("comment");
+    const result = await Product.findOne({ _id: id }).populate("comment");
     return result;
   } catch (error) {
     return error.toString();
