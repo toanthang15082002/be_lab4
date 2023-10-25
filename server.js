@@ -11,14 +11,13 @@ import {
 
 const app = express();
 app.use(express.json());
-var corsOptions = {
-  origin: "localhost:3000",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-app.get("/products/:id", cors(corsOptions), function (req, res, next) {
-  res.json({ msg: "This is CORS-enabled for only example.com." });
-});
+app.use(
+  cors({
+    origin: ["http://localhost:3000"], // Replace with the origin of your frontend
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // Enable credentials (if needed)
+  })
+);
 app.get("/", function (req, res) {
   res.send("Hello World");
 });
