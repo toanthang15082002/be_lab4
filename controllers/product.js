@@ -57,8 +57,22 @@ const createProduct = async (req, res) => {
     });
   }
 };
-
+const getDetail = async (req, res) => {
+  const { id } = req.body;
+  try {
+    const result = await productReposiroty.getDetail(id);
+    res.status(200).json({
+      message: "Get product success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.toString(),
+    });
+  }
+};
 export default {
   getAll,
   createProduct,
+  getDetail,
 };

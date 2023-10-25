@@ -34,7 +34,16 @@ const createProduct = async ({
   }
 };
 
+const getDetail = async (id) => {
+  try {
+    const result = await Product.find({ _id: id });
+    return result;
+  } catch (error) {
+    return error.toString();
+  }
+};
 export default {
   getAll,
   createProduct,
+  getDetail,
 };
