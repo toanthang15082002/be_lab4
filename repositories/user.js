@@ -8,7 +8,15 @@ const createUser = async ({ username, email, password }) => {
     return error.toString();
   }
 };
-
+const getAllUser = async (username, email, password) => {
+  try {
+    const result = await User.find();
+    return result;
+  } catch (error) {
+    return error.toString();
+  }
+};
 export default {
   createUser,
+  getAllUser,
 };

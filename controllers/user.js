@@ -19,6 +19,21 @@ const createUser = async (req, res) => {
   }
 };
 
+const getAllUser = async (req, res) => {
+  try {
+    const result = await userRepository.getAllUser();
+    res.status(200).json({
+      message: "Get user success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Get is not successful",
+    });
+  }
+};
+
 export default {
   createUser,
+  getAllUser,
 };
