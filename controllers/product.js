@@ -58,7 +58,8 @@ const createProduct = async (req, res) => {
   }
 };
 const getDetail = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
+  console.log("🚀 ========= id:", id);
   try {
     const result = await productReposiroty.getDetail(id);
     res.status(200).json({
