@@ -15,14 +15,22 @@ const getAll = async (req, res) => {
 };
 
 const createCart = async (req, res) => {
-  const { discountTotal, totalProduct, totalQuantity, totalPrice, userId } = req.body;
+  const {
+    discountTotal,
+    totalProduct,
+    totalQuantity,
+    totalPrice,
+    userId,
+    product,
+  } = req.body;
+  console.log("🚀 ========= product:", product);
   try {
     const result = await cartRepository.createCart({
       discountTotal,
       totalProduct,
       totalQuantity,
       totalPrice,
-      userId
+      userId,
     });
     res.status(200).json({
       message: "Get cart success",
