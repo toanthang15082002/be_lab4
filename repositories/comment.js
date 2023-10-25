@@ -14,11 +14,11 @@ const createComment = async ({ title, body, createdAt, userId, productId }) => {
       { $push: { comment: result?._id } }, // Thêm commentId vào mảng comments của sản phẩm
       { new: true }
     );
-    const newComment = await result.populate({
-      path: "user",
-      select: "username email",
-    });
-    return newComment;
+    // const newComment = await result.populate({
+    //   path: "user",
+    //   select: "username email",
+    // });
+    return result;
   } catch (error) {
     throw new Error(error);
   }

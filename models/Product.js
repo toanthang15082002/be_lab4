@@ -45,10 +45,12 @@ const Product = mongoose.model(
         },
       },
     ],
-    comment: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment",
-    },
+    comment: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
   })
 );
 export default Product;

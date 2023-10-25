@@ -2,7 +2,7 @@ import Product from "../models/Product.js";
 
 const getAll = async () => {
   try {
-    const result = await Product.find();
+    const result = await Product.find().populate("comment");
     return result;
   } catch (error) {
     return error.toString();
