@@ -34,9 +34,10 @@ const getAllUser = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { username, email, password } = res.body;
+  const { email, password } = req.body;
+  console.log("🚀 ========= res.body:", req.body);
   try {
-    const result = await userRepository.login({ username, email, password });
+    const result = await userRepository.login({ email, password });
     res.status(201).json({
       message: "Login success",
       data: result,

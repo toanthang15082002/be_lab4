@@ -17,10 +17,10 @@ const getAllUser = async (username, email, password) => {
   }
 };
 
-const login = async ({ username, email, password }) => {
+const login = async ({ email, password }) => {
   try {
-    const result = User.findOne({ username, email, password });
-    return result;
+    const result = await User.findOne({ email, password });
+    return result ? result : "Tai khoan mat khau khum dung";
   } catch (error) {
     return error.toString();
   }
