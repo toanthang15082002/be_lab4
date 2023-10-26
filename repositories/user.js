@@ -16,7 +16,17 @@ const getAllUser = async (username, email, password) => {
     return error.toString();
   }
 };
+
+const login = async ({ username, email, password }) => {
+  try {
+    const result = User.findOne({ username, email, password });
+    return result;
+  } catch (error) {
+    return error.toString();
+  }
+};
 export default {
   createUser,
   getAllUser,
+  login,
 };

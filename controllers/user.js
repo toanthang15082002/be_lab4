@@ -33,7 +33,22 @@ const getAllUser = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  const { username, email, password } = res.body;
+  try {
+    const result = await userRepository.login({ username, email, password });
+    res.status(201).json({
+      message: "Login success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.toString(),
+    });
+  }
+};
 export default {
   createUser,
   getAllUser,
+  login,
 };
