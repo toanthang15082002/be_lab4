@@ -20,9 +20,12 @@ const getAllUser = async (username, email, password) => {
 const login = async ({ email, password }) => {
   try {
     const result = await User.findOne({ email, password });
-    return result ? result : "Tai khoan mat khau khum dung";
+    if (!result) {
+      throw new Error("Tai khoan mat khau khum dung");
+    }
+    return result;
   } catch (error) {
-    return error.toString();
+    throw new Error(error.toString());
   }
 };
 export default {
