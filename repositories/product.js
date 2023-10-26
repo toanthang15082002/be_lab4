@@ -42,8 +42,18 @@ const getDetail = async (id) => {
     return error.toString();
   }
 };
+
+const getCommentByProduct = async (id) => {
+  try {
+    const result = await Product.findOne({ _id: id }).populate("comment");
+    return result.comment;
+  } catch (error) {
+    return error.toString();
+  }
+};
 export default {
   getAll,
   createProduct,
   getDetail,
+  getCommentByProduct,
 };
