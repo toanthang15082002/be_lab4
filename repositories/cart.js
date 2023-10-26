@@ -20,10 +20,10 @@ const createCart = async ({
 }) => {
   try {
     const result = await Cart.create({
-      discountTotal,
-      totalProduct,
-      totalQuantity,
-      totalPrice,
+      discountTotal: discountTotal || 0,
+      totalProduct: totalProduct || 0,
+      totalQuantity: totalQuantity || 0,
+      totalPrice: totalPrice || 0,
       user: userId,
       product,
     });
